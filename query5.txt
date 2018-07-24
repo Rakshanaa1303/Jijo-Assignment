@@ -1,0 +1,21 @@
+5.Write a query which will display the account number, customer id, registration date, initial deposit amount of the customer
+ whose initial deposit amount is within the range of Rs.15000 to Rs.25000.
+
+SELECT
+  ACCOUNT_NO, 
+  CUSTOMER_ID,
+  REGISTRATION_DATE,
+  INITIAL_DEPOSIT
+  FROM
+     ACCOUNT_INFO
+WHERE INITIAL_DEPOSIT BETWEEN 15000 AND 25000
+
+
+ACCOUNT_NO 	CUSTO 	REGISTRAT 	INITIAL_DEPOSIT
+---------------------------------------------------------
+1.2346E+15 	C-003 	15-MAR-12           16000
+1.2346E+15 	C-005 	12-APR-12           20000
+
+
+
+

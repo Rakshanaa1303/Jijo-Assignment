@@ -1,0 +1,26 @@
+3. Write a query which will display the customer id, customer name, account no, account type and bank name where the customers hold the account.
+
+SELECT
+  C.CUSTOMER_ID,
+  C.CUSTOMER_NAME,
+  AC.ACCOUNT_NO,
+  AC.ACCOUNT_TYPE,
+  B.BANK_NAME
+FROM CUSTOMER_PERSONAL_INFO C,
+     BANK_INFO B,
+     ACCOUNT_INFO AC
+WHERE C.CUSTOMER_ID = AC.CUSTOMER_ID
+AND B.IFSC_CODE = AC.IFSC_CODE;
+
+
+CUSTO CUSTOMER_NAME         ACCOUNT_NO 		ACCOUNT_TY	BANK_NAME
+----- ------------------------------ ---------- -----------------------------------
+C-004 RAMESH                1.2346E+15 		SALARY		HDFC
+
+C-001 JOHN                  1.2346E+15 		SAVINGS		HDFC
+
+C-002 JAMES                 1.2346E+15 		SALARY		SBI
+
+C-003 SUNITHA               1.2346E+15 		SAVINGS		ICICI
+
+C-005 KUMAR                 1.2346E+15 		SAVINGS		SBI

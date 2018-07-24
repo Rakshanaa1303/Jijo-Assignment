@@ -1,0 +1,14 @@
+6.*Write a query which will display customer id, customer name, date of birth, guardian name of the customers whose name starts with 'J'.
+
+SELECT
+  C.CUSTOMER_ID,
+  C.CUSTOMER_NAME,
+  C.DATE_OF_BIRTH,
+  C.GUARDIAN_NAME
+FROM CUSTOMER_PERSONAL_INFO C
+WHERE C.CUSTOMER_NAME LIKE 'J%'
+
+CUSTO 	CUSTOMER_NAME    DATE_OF_B 	GUARDIAN_NAME
+----- ------------------------------ --------- ------------------------------
+C-001 	JOHN             03-MAY-84 	PETER
+C-002 	JAMES            06-AUG-84 	GEORGE

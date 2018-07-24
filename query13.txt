@@ -1,0 +1,30 @@
+13.*Write a query which will display customer id, customer name, date of birth, guardian name, contact number,
+ mail id and reference account holder's name of the customers who has submitted the passport as an identification document.
+
+
+SELECT
+  ac.customer_id,
+  c.customer_name,
+  ac.account_no,
+  c.date_of_birth,
+  c.guardian_name,
+  c.contact_no,
+  c.mail_id
+FROM account_info ac,
+     customer_personal_info c,
+     CUSTOMER_REFERENCE_INFO r
+WHERE c.customer_id = ac.customer_id
+AND ac.customer_id = c.customer_id
+AND r.customer_id = c.customer_id;
+
+CUSTO	CUSTOMER_NAME	ACCOUNT_NO	DATE_OF_BIRTH	GUARDIAN_NAME	CONTACT_NO	MAIL_ID
+------------------------------ ---------- --------------------------------------------------------------------
+C-001	JOHN		1.2346E+15 	03-MAY-84	PETER		9734526719	JOHN_123@gmail.com
+
+C-002 	JAMES           1.2346E+15 	06-AUG-84	GEORGE          9237893481 	JAMES_123@gmail.com
+
+C-003 	SUNITHA         1.2346E+15	06-NOV-84	VINOD           9438978389 	SUNITHA_123@gmail.com
+
+C-004 	RAMESH          1.2346E+15 	11-DEC-85	KRISHNAN        9235234534 	RAMESH_123@gmail.com
+
+C-005	KUMAR          	1.2346E+15 	26-APR-83	KIRAN           9242342312 	KUMAR_123@gmail.com

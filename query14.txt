@@ -1,0 +1,38 @@
+14.*Write a query to display the customer id, customer name, account number, account type, initial deposit, 
+interest who have deposited maximum amount in the bank.
+
+SELECT
+  ac.customer_id,
+  c.customer_name,
+  ac.account_no,
+  ac.account_type,
+  ac.interest,
+  b.bank_name,
+  ac.initial_deposit
+FROM account_info ac,
+     customer_personal_info c,
+     bank_info b
+WHERE ac.ifsc_code = b.ifsc_code
+AND ac.customer_id = c.customer_id
+ORDER BY initial_deposit DESC;
+
+CUSTO	CUSTOMER_NAME	ACCOUNT_NO	ACCOUNT_TY   INTEREST	BANK_NAME	INITIAL_DEPOSIT
+----- ------------------------------ ---------- ---------- ----------------------------------- ---------------
+C-005 	KUMAR		1.2346E+15 	SAVINGS        8	SBI             20000
+
+
+C-003 	SUNITHA         1.2346E+15 	SAVINGS        4	ICICI           16000
+
+
+C-001 	JOHN            1.2346E+15 	SAVINGS        5	HDFC            10000
+
+
+C-004 	RAMESH          1.2346E+15 	SALARY         7	HDFC               0
+
+
+C-002 	JAMES           1.2346E+15 	SALARY         6	SBI                0
+
+
+
+
+

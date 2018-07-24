@@ -1,0 +1,21 @@
+17.Write a query which will display customer id, bank name, branch name, ifsc code, registration date, 
+activation date of the customers whose activation date is in the month of march (March 1'st to March 31'st).
+
+SELECT
+  ac.customer_id,
+  b.bank_name,
+  b.branch_name,
+  b.ifsc_code,
+  ac.registration_date
+FROM account_info ac,
+     customer_personal_info c,
+     bank_info b
+WHERE ac.ifsc_code = b.ifsc_code
+AND ac.customer_id = c.customer_id
+AND to_char(activation_date, 'mm') = '03';
+
+CUSTO	BANK_NAME	BRANCH_NAME	IFSC_CODE	REGISTRATION
+------------------------------------------------------------------------
+C-002 	SBI             TNAGAR          SBITN0123	12-MAR-12
+
+C-003 	ICICI           TNAGAR          ICITN0232	15-MAR-12

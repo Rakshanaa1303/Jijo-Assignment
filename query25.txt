@@ -1,0 +1,32 @@
+25.Write query to display the customer id, customer name, account no, initial deposit, tax percentage as calculated below.
+<BR>Hint: <BR>If initial deposit = 0 then tax is '0%'<BR>If initial deposit &lt;= 10000 then tax is '3%' 
+<BR>If initial deposit &gt; 10000 and initial deposit &lt; 20000 then tax is '5%' <BR>If initial deposit &gt;= 20000 and
+ initial deposit&lt;=30000 then tax is '7%' <BR>If initial deposit &gt; 30000 then tax is '10%' <BR>Use the alias name 'taxPercentage'
+
+SELECT
+  C.CUSTOMER_ID,
+  C.CUSTOMER_NAME,
+  AC.ACCOUNT_NO,
+  AC.ACCOUNT_TYPE,
+  AC.INITIAL_DEPOSIT,
+  CASE 
+  WHEN AC.INITIAL_DEPOSIT >= 30000 THEN '7%'
+  WHEN AC.INITIAL_DEPOSIT >= 20000 THEN '5%'
+  WHEN AC.INITIAL_DEPOSIT >= 10000 THEN '3%'
+  WHEN AC.INITIAL_DEPOSIT >= 0 THEN '0%'
+  END AS taxPercentage
+FROM BANK_INFO B,
+     CUSTOMER_PERSONAL_INFO C,
+     ACCOUNT_INFO AC
+WHERE C.CUSTOMER_ID = AC.CUSTOMER_ID
+AND AC.IFSC_CODE = B.IFSC_CODE;
+
+
+CUST_ID	CUSTOMER_NAME	ACCOUNT_NO	ACCOUNT_TYPE	INITIAL_DEPOSIT	TAX
+----- ------------------------------ ---------- ---------- --------------- --
+C-001 	JOHN            1.2346E+15 	SAVINGS              10000 	3%
+C-002 	JAMES           1.2346E+15 	SALARY                   0 	0%
+C-003 	SUNITHA         1.2346E+15 	SAVINGS              16000 	3%
+C-004 	RAMESH          1.2346E+15 	SALARY                   0 	0%
+C-005 	KUMAR          	1.2346E+15 	SAVINGS              20000 	5%
+

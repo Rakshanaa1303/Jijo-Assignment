@@ -1,0 +1,25 @@
+16.Write a query to display the customer id, customer name, account no, bank name, contact no 
+and mail id of the customers who are from BANGALORE.
+
+SELECT
+  ac.customer_id,
+  c.customer_name,
+  ac.account_no,
+  b.bank_name,
+  c.contact_no,
+  c.mail_id
+FROM account_info ac,
+     customer_personal_info c,
+     bank_info b
+WHERE ac.ifsc_code = b.ifsc_code
+AND ac.customer_id = c.customer_id
+AND instr(LOWER(address), 'bangalore') <> 0;
+
+
+CUSTO	CUSTOMER_NAME	ACCOUNT_NO	BANK_NAME	CONTACT_NO	MAIL_ID
+----- ------------------------------ ---------- -------------------------
+C-001 	JOHN            1.2346E+15 	HDFC		9734526719 	JOHN_123@gmail.com
+
+C-002 	JAMES           1.2346E+15 	SBI		9237893481 	JAMES_123@gmail.com
+
+C-005 	KUMAR           1.2346E+15 	SBI		9242342312 	KUMAR_123@gmail.com

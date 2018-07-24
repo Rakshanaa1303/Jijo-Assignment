@@ -1,0 +1,25 @@
+10.*Write a query to display the customer id, account number and interest amount in the below format with INTEREST_AMT as alias name
+ Sort the result based on the INTEREST_AMT in ascending order.  <BR/>Example: 
+$5<BR/>Hint: Need to prefix $ to interest amount and round the result without decimals.
+
+
+select
+customer_id,
+initial_deposit,
+interest,
+account_no, '$' || round(interest/100 * initial_deposit) as interest_amt 
+from account_info 
+order by round(interest/100 * initial_deposit);
+
+
+CUSTO INITIAL_DEPOSIT   INTEREST ACCOUNT_NO	INTEREST_AMT
+----- --------------- ---------- ----------------------------
+C-002               0          6 1.2346E+15	$0
+
+C-004               0          7 1.2346E+15	$0
+
+C-001           10000          5 1.2346E+15	$500
+
+C-003           16000          4 1.2346E+15	$640
+
+C-005           20000          8 1.2346E+15	$1600

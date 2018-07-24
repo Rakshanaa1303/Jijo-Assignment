@@ -1,0 +1,18 @@
+7.*Write a query which will display customer id, account number and passcode. 
+<br/>
+Hint:  To generate passcode, join the last three digits of customer id and last four digit of account number.
+ 
+<br/>Example
+<br/>C-001                   1234567898765432                0015432
+<br/>Use ""PASSCODE"" as alias name for displaying the passcode."
+
+
+SELECT ACCOUNT_NO, CUSTOMER_ID, SUBSTR(CUSTOMER_ID, -3 ,3) || SUBSTR(account_no, -4, 4) PASSCODE FROM ACCOUNT_INFO;
+
+ACCOUNT_NO 	CUSTO 	PASSCOD
+---------- ----- ----------------
+1.2346E+15 	C-001 	0015432
+1.2346E+15 	C-002 	0025433
+1.2346E+15 	C-003 	0035434
+1.2346E+15 	C-004 	0045435
+1.2346E+15 	C-005 	0055436

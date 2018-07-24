@@ -1,0 +1,29 @@
+12.*Write a query which will display account number, customer id, customer name, bank name, branch name, ifsc code, citizenship, interest and initial deposit amount of all the customers.
+
+SELECT
+  ac.account_no,
+  ac.customer_id,
+  c.customer_name,
+  b.bank_name,
+  b.ifsc_code,
+  c.citizenship,
+  ac.interest,
+  ac.initial_deposit
+FROM account_info ac,
+     customer_personal_info c,
+     bank_info b
+WHERE ac.ifsc_code = b.ifsc_code
+AND ac.customer_id = c.customer_id;
+
+
+ACCOUNT_NO	CUSTOMERID	CUSTOMER_NAME	BANK_NAME	IFSC_CODE	CITIZENSHIP	INTEREST	INITIAL_DEPOSIT	
+---------- ----- ------------------------------ -----------------------------------------------------------------------------------
+1.2346E+15 	C-004 		RAMESH		HDFC		HDVL0012        INDIAN              7               0
+
+1.2346E+15	C-001 		JOHN            HDFC		HDVL0012        INDIAN              5           10000
+
+1.2346E+15 	C-002 		JAMES           SBI		SBITN0123       INDIAN              6               0
+
+1.2346E+15 	C-003 		SUNITHA         ICICI		ICITN0232       INDIAN              4           16000
+
+1.2346E+15 	C-005 		KUMAR           SBI		SBISD0113       INDIAN              8           20000

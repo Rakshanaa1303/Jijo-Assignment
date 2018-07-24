@@ -1,0 +1,30 @@
+18.Write a query which will calculate the interest amount and display it along with customer id, customer name, 
+account number, account type, interest, and initial deposit amount.<BR>Hint :Formula for interest amount, 
+calculate: ((interest/100) * initial deposit amt) with column name 'interest_amt' (alias)
+
+SELECT
+  ac.customer_id,
+  c.customer_name,
+  ac.account_no,
+  ac.account_type,
+  ac.interest,
+  ac.initial_deposit,
+  ((ac.interest / 100) * initial_deposit) AS interest_amt
+FROM account_info ac,
+     customer_personal_info c,
+     bank_info b
+WHERE ac.ifsc_code = b.ifsc_code
+AND ac.customer_id = c.customer_id;
+
+
+CUSTO	CUSTOMER_NAME	ACCOUNT_NO	ACCOUNT_TYPE	INTEREST	INITIAL_DEPOSIT	INTEREST_AMT
+----- ------------------------------ ---------- ---------- ------------------------- -----------------
+C-001	JOHN		1.2346E+15	SAVINGS             5		10000		500
+
+C-002 	JAMES           1.2346E+15 	SALARY              6		0            	0
+
+C-003 	SUNITHA         1.2346E+15 	SAVINGS             4		16000          	640
+
+C-004 	RAMESH          1.2346E+15 	SALARY              7		0           	0
+
+C-005 	KUMAR           1.2346E+15 	SAVINGS             8		20000         	1600

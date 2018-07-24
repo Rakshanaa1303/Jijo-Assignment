@@ -1,0 +1,44 @@
+24."Write a query which will display customer id, customer name,  account number, account type, bank name, ifsc code, initial deposit amount
+ and new interest amount for the customers whose name starts with ""J"". 
+<br/> Hint:  Formula for calculating ""new interest amount"" is 
+if customers account type is savings then add 10 % on current interest amount to interest amount else display the current interest amount.
+ Round the new interest amount to 2 decimals.<br/> Use ""NEW_INTEREST"" as alias name for displaying the new interest amount.
+
+<br/>Example, Assume Jack has savings account and his current interest amount is 10.00, then the new interest amount is 11.00 i.e (10 + (10 * 10/100)). 
+"
+
+SELECT
+  C.CUSTOMER_ID,
+  C.CUSTOMER_NAME,
+  AC.ACCOUNT_NO,
+  AC.ACCOUNT_TYPE,
+  B.BANK_NAME,
+  B.IFSC_CODE,
+  AC.INITIAL_DEPOSIT,
+  CASE AC.ACCOUNT_TYPE
+  WHEN 'SAVINGS' THEN AC.INTEREST + (AC.INTEREST * 10/100)
+  ELSE AC.INTEREST
+  END AS NEW_INTEREST
+FROM BANK_INFO B,
+     CUSTOMER_PERSONAL_INFO C,
+     ACCOUNT_INFO AC
+WHERE C.CUSTOMER_ID = AC.CUSTOMER_ID
+AND AC.IFSC_CODE = B.IFSC_CODE;
+
+
+
+CUSTO	CUSTOMER_NAME	ACCOUNT_NO	ACCOUNT_TYPE	BANK_NAME	IFSC_CODE	INITIAL_DEPOSIT	NEW_INTEREST
+----- ------------------------------ ---------- ----------------------------------- --------------- --------------- ---------------------
+C-001	JOHN		1.2346E+15 	SAVINGS		HDFC		HDVL0012	10000          	5.5
+
+C-002 	JAMES           1.2346E+15 	SALARY		SBI             SBITN0123       0            	6
+
+C-003	SUNITHA		1.2346E+15 	SAVINGS		ICICI		ICITN0232	16000          	4.4
+
+C-004	RAMESH          1.2346E+15	SALARY		HDFC            HDVL0012         0            	7
+
+C-005	KUMAR           1.2346E+15	SAVINGS		SBI             SBISD0113        20000          8.8
+
+
+
+

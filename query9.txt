@@ -1,0 +1,21 @@
+9.*Write a query which will display the customer id, customer name, guardian name, reference account holders name of the customers 
+who are referenced / referred by their 'FRIEND'.
+
+
+SELECT
+  c.customer_id,
+  c.customer_name,
+  c.guardian_name,
+  r.reference_acc_name
+FROM customer_personal_info c,
+     customer_reference_info r
+WHERE c.customer_id = r.customer_id
+AND LOWER(r.relation) = 'friend';
+
+CUSTO CUSTOMER_NAME		GUARDIAN_NAME		REFERENCE_ACC_NAME
+-----------------------------------------------------------------------------------
+C-001 JOHN			PETER			RAM
+
+C-002 JAMES			GEORGE			RAGHUL
+
+C-004 RAMESH			KRISHNAN		RAHMAN

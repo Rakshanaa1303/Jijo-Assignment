@@ -1,0 +1,37 @@
+23."Write a query which will display the customer id, customer name, account number, account type, interest, initial deposit;
+ <br/>check the initial deposit,<br/> if initial deposit is 20000 then display ""high"",<br/> if initial deposit is 16000 display 'moderate'
+,<br/> if initial deposit is 10000 display 'average', <br/>if initial deposit is 5000 display 'low', <br/>if initial deposit is 0 display
+ 'very low' otherwise display 'invalid' and sort by interest in descending order.<br/>
+Hint: Name the column as ""Deposit_Status"" (alias). 
+<br/>Strictly follow the lower case for strings in this query."
+
+SELECT C.CUSTOMER_ID,
+C.CUSTOMER_NAME,
+AC.ACCOUNT_NO,
+AC.ACCOUNT_TYPE,
+AC.INTEREST,
+AC.INITIAL_DEPOSIT,
+CASE AC.INITIAL_DEPOSIT
+WHEN 20000 THEN 'HIGH'
+WHEN 16000 THEN 'MODERATE'
+WHEN 10000 THEN 'AVERAGE'
+WHEN 5000 THEN 'LOW'
+WHEN 0 THEN 'VERY LOW'
+END DEPOSIT_STATUS
+FROM ACCOUNT_INFO AC,
+CUSTOMER_PERSONAL_INFO C
+WHERE AC.CUSTOMER_ID = C.CUSTOMER_ID;
+
+
+
+CUSTO	CUSTOMER_NAME	ACCOUNT_NO	ACCOUNT_TYPE	INTEREST	INITIAL_DEPOSIT	DEPOSIT_STATUS
+----- ------------------------------ ---------- ---------- ------------------------- ----------------
+C-001 	JOHN            1.2346E+15 	SAVINGS             5		10000 		AVERAGE
+
+C-002 	JAMES          	1.2346E+15 	SALARY              6		0 		VERY LOW
+
+C-003 	SUNITHA         1.2346E+15 	SAVINGS             4		16000 		MODERATE
+
+C-004 	RAMESH          1.2346E+15 	SALARY              7		0 		VERY LOW
+
+C-005 	KUMAR           1.2346E+15 	SAVINGS             8		20000 		HIGH

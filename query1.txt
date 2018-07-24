@@ -1,0 +1,21 @@
+1. Write a query which will display the customer id, account type they hold, their account number and bank name.
+
+
+SELECT
+  AC.CUSTOMER_ID,
+  AC.ACCOUNT_TYPE,
+  AC.ACCOUNT_NO,
+  B.BANK_NAME
+FROM ACCOUNT_INFO AC,
+     BANK_INFO B
+WHERE B.IFSC_CODE = AC.IFSC_CODE;
+
+
+CUSTO ACCOUNT_TY ACCOUNT_NO BANK_NAME
+----- ---------- ---------- ---------
+C-001 SAVINGS    1.2346E+15 HDFC
+C-004 SALARY     1.2346E+15 HDFC
+C-003 SAVINGS    1.2346E+15 ICICI
+C-005 SAVINGS    1.2346E+15 SBI
+C-002 SALARY     1.2346E+15 SBI
+

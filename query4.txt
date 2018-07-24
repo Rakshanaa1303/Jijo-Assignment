@@ -1,0 +1,35 @@
+4. Write a query which will display the customer id, customer name, gender, marital status along with the unique reference string and
+ sort the records based on customer id in descending order. <br/>
+<br/><b>Hint:  </b>Generate unique reference string as mentioned below
+:
+<br/> CustomerName_Gender_MaritalStatus
+<br/><b> Example, </b>
+<br/> C-005           KUMAR              M                 SINGLE            KUMAR_M_SINGLE
+<BR/> 
+Use ""UNIQUE_REF_STRING"" as alias name for displaying the unique reference string."
+
+
+select 
+customer_id,
+ customer_name,
+ gender, 
+marital_status, 
+customer_name || '_' || gender || '_' || marital_status UNIQUE_REF_STRING
+from customer_personal_info
+order by customer_id desc;
+
+CUSTO CUSTOMER_NAME                  G MARITAL_ST	UNIQUE_REF_STRING
+----- ------------------------------ - -----------------------------------------------------
+C-005 KUMAR                          M SINGLE		KUMAR_M_SINGLE
+
+
+C-004 RAMESH                         M MARRIED		RAMESH_M_MARRIED
+
+
+C-003 SUNITHA                        F SINGLE		SUNITHA_F_SINGLE
+
+
+C-002 JAMES                          M MARRIED		JAMES_M_MARRIED
+
+
+C-001 JOHN                           M SINGLE		JOHN_M_SINGLE

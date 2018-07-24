@@ -1,0 +1,23 @@
+20."Write a query which will display the customer id, customer name and contact number with ISD code of 
+all customers in below mentioned format.  Sort the result based on the customer id in descending order. 
+<BR>Format for contact number is :  
+<br/> ""+91-3digits-3digits-4digits""
+<br/> Example: +91-924-234-2312
+<br/> Use ""CONTACT_ISD"" as alias name."
+
+
+
+select customer_id, customer_name, date_of_birth, contact_no, '+91-' || substr(contact_no, 1, 3) || '-' || substr(contact_no, 4, 3) || '-' || substr(contact_no, 7) as CONTACT_ISD from customer_personal_info order by customer_id;
+
+
+CUSTO	CUSTOMER_NAME	DATE_OF_BIRTH	CONTACT_NO	CONTACT_ISD
+---------------------------------------------------------------------
+C-001 	JOHN            03-MAY-84 	9734526719	+91-973-452-6719
+
+C-002 	JAMES           06-AUG-84 	9237893481	+91-923-789-3481
+
+C-003 	SUNITHA         06-NOV-84 	9438978389	+91-943-897-8389
+
+C-004 	RAMESH          11-DEC-85 	9235234534	+91-923-523-4534
+
+C-005 	KUMAR          	26-APR-83 	9242342312	+91-924-234-2312

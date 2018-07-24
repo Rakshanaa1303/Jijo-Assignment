@@ -1,0 +1,21 @@
+2. Write a query which will display the customer id, account type and the account number of HDFC customers who registered after 12-JAN-2012 and before 04-APR-2012.
+
+
+
+SELECT
+  CUSTOMER_ID,
+  ACCOUNT_TYPE,
+  ACCOUNT_NO
+FROM ACCOUNT_INFO
+WHERE IFSC_CODE IN (SELECT
+  IFSC_CODE
+FROM BANK_INFO
+WHERE BANK_NAME = 'HDFC')
+AND REGISTRATION_DATE BETWEEN '12-JAN-2012' AND '04-APR-2012';
+
+
+
+
+CUSTO ACCOUNT_TY ACCOUNT_NO
+----- ---------- ----------
+C-001 SAVINGS    1.2346E+15
